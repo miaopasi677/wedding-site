@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>婚礼邀请 · 2026.5.4</title>
+<link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+<canvas id="webgl"></canvas>
+<canvas id="particles"></canvas>
+
+<!-- ===== 第一屏：开场 ===== -->
+<section class="scene" id="scene-intro">
+  <div class="bg-photo" style="background-image:url('./assets/2026-04-08%20112721.jpg')"></div>
+  <div class="bg-overlay"></div>
+  <div class="intro-content">
+    <p class="intro-eyebrow">— 我们诚挚地邀请您 —</p>
+    <div class="rings">💍</div>
+    <h1 class="title">我们结婚了</h1>
+    <p class="subtitle">愿你赴这场最美的约定</p>
+    <div class="name-pair">
+      <span class="groom">新郎</span>
+      <span class="name-heart">❤</span>
+      <span class="bride">新娘</span>
+    </div>
+    <div class="scroll-hint">
+      <span>向下滚动</span>
+      <div class="arrow"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 第二屏：诗句 ===== -->
+<section class="scene" id="scene-poem">
+  <div class="bg-photo" style="background-image:url('./assets/2025-11-19%20115459.jpg')"></div>
+  <div class="bg-overlay dark"></div>
+  <div class="poem-wrap reveal">
+    <div class="poem-line-deco">✦</div>
+    <blockquote class="poem">
+      <p>执子之手，与子偕老</p>
+      <p>死生契阔，与子成说</p>
+    </blockquote>
+    <cite class="poem-source">— 《诗经·邶风·击鼓》</cite>
+    <div class="poem-line-deco">✦</div>
+    <p class="poem-sub">从相遇的那一刻起<br>我便知道，你是我此生最美的缘分</p>
+  </div>
+</section>
+
+<!-- ===== 第三屏：照片轮播（JS 动态生成所有图片） ===== -->
+<section class="scene" id="scene-gallery">
+  <div class="gallery-slides" id="gallery-slides"></div>
+  <div class="gallery-overlay"></div>
+  <div class="gallery-ui">
+    <p class="gallery-eyebrow">— 我们的故事 —</p>
+    <p class="gallery-quote">每一张照片，都是我们故事的一页<br>每一个瞬间，都值得被永远珍藏</p>
+    <div class="gallery-dots" id="gallery-dots"></div>
+  </div>
+</section>
+
+<!-- ===== 第四屏：爱情时间线 ===== -->
+<section class="scene" id="scene-timeline">
+  <div class="bg-photo" style="background-image:url('./assets/2025-11-19%20143058.jpg')"></div>
+  <div class="bg-overlay dark"></div>
+  <div class="timeline-wrap reveal">
+    <h2 class="section-title">我们的故事</h2>
+    <div class="timeline">
+
+      <div class="tl-item reveal-left">
+        <div class="tl-thumb" style="background-image:url('./assets/2025-11-19%20120105.jpg')"></div>
+        <div class="tl-body">
+          <div class="tl-year">🌱 相遇</div>
+          <p class="tl-text">在人海中，我们相遇<br>那一眼，便是一生</p>
+        </div>
+      </div>
+
+      <div class="tl-item reveal-right">
+        <div class="tl-thumb" style="background-image:url('./assets/2025-11-19%20120729.jpg')"></div>
+        <div class="tl-body">
+          <div class="tl-year">🌸 相知</div>
+          <p class="tl-text">慢慢了解彼此的喜怒哀乐<br>你成了我最想倾诉的人</p>
+        </div>
+      </div>
+
+      <div class="tl-item reveal-left">
+        <div class="tl-thumb" style="background-image:url('./assets/2025-11-19%20170347.jpg')"></div>
+        <div class="tl-body">
+          <div class="tl-year">💑 相爱</div>
+          <p class="tl-text">牵起你的手的那一刻<br>我知道，我找到了家</p>
+        </div>
+      </div>
+
+      <div class="tl-item reveal-right">
+        <div class="tl-thumb" style="background-image:url('./assets/2025-11-19%20174703.jpg')"></div>
+        <div class="tl-body">
+          <div class="tl-year">💍 永远</div>
+          <p class="tl-text">2026年5月4日<br>我们将在洛阳许下一生的诺言</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== 第五屏：照片墙（九宫格） ===== -->
+<section class="scene" id="scene-mosaic">
+  <div class="bg-photo" style="background-image:url('./assets/2025-11-19%20172621.jpg')"></div>
+  <div class="bg-overlay dark"></div>
+  <div class="mosaic-wrap reveal">
+    <h2 class="section-title">珍藏时光</h2>
+    <div class="mosaic-grid" id="mosaic-grid"></div>
+  </div>
+</section>
+
+<!-- ===== 第六屏：婚礼信息 ===== -->
+<section class="scene" id="scene-info">
+  <div class="bg-photo" style="background-image:url('./assets/2025-11-19%20124212.jpg')"></div>
+  <div class="bg-overlay dark"></div>
+  <div class="info-card reveal">
+    <div class="info-deco">✦ ✦ ✦</div>
+    <h2 class="info-title">婚礼详情</h2>
+    <div class="info-row">
+      <span class="info-icon">📅</span>
+      <div>
+        <div class="info-label">日期</div>
+        <div class="info-value">2026年5月4日</div>
+      </div>
+    </div>
+    <div class="info-row">
+      <span class="info-icon">⏰</span>
+      <div>
+        <div class="info-label">时间</div>
+        <div class="info-value">11:58 AM</div>
+      </div>
+    </div>
+    <div class="info-row">
+      <span class="info-icon">📍</span>
+      <div>
+        <div class="info-label">地点</div>
+        <div class="info-value">洛阳市国宝瑞邑<br>观澜厅</div>
+      </div>
+    </div>
+    <div class="info-divider"></div>
+    <p class="info-note">您的到来，是我们最珍贵的礼物<br>期待与您共享这份喜悦</p>
+    <div class="info-deco">✦ ✦ ✦</div>
+  </div>
+</section>
+
+<!-- ===== 第七屏：倒计时 ===== -->
+<section class="scene" id="scene-countdown">
+  <div class="bg-photo" style="background-image:url('./assets/2025-11-19%20145021.jpg')"></div>
+  <div class="bg-overlay dark"></div>
+  <div class="countdown-wrap reveal">
+    <p class="countdown-eyebrow">— 美好时刻即将到来 —</p>
+    <p class="countdown-label">距离婚礼还有</p>
+    <div class="countdown-boxes">
+      <div class="cbox"><span id="cd-days">--</span><small>天</small></div>
+      <div class="cbox"><span id="cd-hours">--</span><small>时</small></div>
+      <div class="cbox"><span id="cd-mins">--</span><small>分</small></div>
+      <div class="cbox"><span id="cd-secs">--</span><small>秒</small></div>
+    </div>
+    <p class="final-text">愿你带着祝福而来<br>让我们共同见证这一生中最美的时刻</p>
+    <div class="hearts"><span>🌸</span><span>💕</span><span>🌸</span></div>
+  </div>
+</section>
+
+<!-- ===== 第八屏：结尾 ===== -->
+<section class="scene" id="scene-end">
+  <div class="bg-photo" style="background-image:url('./assets/071c6e4d790a08ca576e28da48925629.jpg')"></div>
+  <div class="bg-overlay"></div>
+  <div class="end-content reveal">
+    <p class="end-eyebrow">— 感谢您的到来 —</p>
+    <p class="end-quote">"愿所有美好，如期而至"</p>
+    <p class="end-text">我们在洛阳等您</p>
+    <p class="end-date">2026 · 5 · 4</p>
+    <div class="end-location">洛阳市国宝瑞邑 · 观澜厅</div>
+    <div class="end-deco">💕</div>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+<script type="module" src="./js/main.js"></script>
+<script src="./js/particles.js"></script>
+<script src="./js/countdown.js"></script>
+<script src="./js/scroll-anim.js"></script>
+<script src="./js/gallery.js"></script>
+
+</body>
+</html>
